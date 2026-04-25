@@ -127,15 +127,33 @@ def analizar_chat_reclutamiento(historial_mensajes: List[dict]) -> AnalisisReclu
         openai_api_key=api_key
     )
     
+    
+    emojis_dict = {
+        "🥷": "Es utilizado para representar a los ladrones o las personas que operan para los cárteles y que aprecen encapuchados en contenido multimedia.",
+        "🪖": "Es utilizado en videos donde aparecen personas fuertemente armadas. A veces estas personas posan desde camionetas y automóviles de lujo, utilizando vestimenta militar.",
+        "👿": "Representa el mal",
+        "👺": "Representa a Namahague, un ogro japonés. Se utiliza como una variante del diablo. Aparece constantemente en publicaciones que incorporan canciones de Makabélico.",
+        "🧿": "Está asociado con la protección del mal de ojo y las malas energías. Se utliza para referenciasl directamente a 'la maña'",
+        "🍕": "Aparece sistemáticamente en las cuentas asociadas con el Cártel de Sinaloa, especificamente con la facción encabezada por Joaquín (El Chapo) Guzmán, Este emoji casi siempre es utilizado después de las letras 'ch' para formar la palabra 'chapizza'",
+        "🐓": "Figura en las publicaciones de las cuentas reclutadoras del CJNG. Se utiliza para referencias a Nemesio Oseguera Cervantes (El Mencho), también apodado 'El señor de los gallos', quien es el principal líder de esta organización criminal.",
+        "🆖": "Aparece en las publicaciones de las cuentas reclutadoras del CJNG. Las siglas significan 'Nueva Generación'. A menudo es utilizado después del número 4."
+    }
+
+    hashtag_list = ["#gentedelmz", "#mayozambada", "#operativamz", "#gentedelmayozambada",
+                    "#nuevageneraión", "#4letras", "#4l", "#ng", "#mencho", "#mencho (sic.)", "#señormencho", "#ElSeñorDeLosGallos",
+                    "#maña", "#trabajoparalamaña", "#belicones", "#fracesbelicas (sic.)",
+                    "#makabelico_oficial", "#ondeado", "#victormendivil", "#makabelico"]
+
     # Enlazamos el LLM con el esquema de Pydantic
     llm_estructurado = llm.with_structured_output(AnalisisReclutamiento)
 
     # Definimos las instrucciones del sistema
-    instrucciones = """Eres un sistema de seguridad experto en ciberseguridad y prevención de reclutamiento de grupos criminales.
+    instrucciones = f"""Eres un sistema de seguridad experto en ciberseguridad y prevención de reclutamiento de grupos criminales.
     Tu objetivo es analizar una conversación de chat (los últimos 5 mensajes) justo antes de que el último mensaje sea entregado al receptor.
 
     Debes detectar si algún usuario está pidiendo datos personales confidenciales, haciendo promesas de dinero fácil, o mostrando patrones de reclutamiento.
-
+    detecta hashtags peligrosos de {hashtag_list} y emojis con significado oculto como por ejemplo {emojis_dict}.
+    Entiende bien el contexto en el que se usan estos hashtags y emojis para saber si realmente son sobre reclutamiento.
     Realiza un 'Chain of Thought' (pensamiento paso a paso) en el campo correspondiente antes de dar tu veredicto.
 
     Reglas para clasificar el estado de los usuarios:
