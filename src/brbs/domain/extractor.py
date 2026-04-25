@@ -32,12 +32,10 @@ def extraer_texto_imagen(ruta_imagen, llm):
 
     # Instrucciones para el modelo
     prompt = """Extrae todo el texto visible de esta imagen. No cambies, corrijas, elimines ni agregues nada.
-    Incluye emojis, hashtags, menciones y signos tal como aparecen. 
+    Incluye todos los emojis visibles sin importar si no vienen seguidos de texto. Incluye hashtags, menciones y signos tal como aparecen.
     Devuelve el resultado en un solo párrafo, reemplazando saltos de línea por espacios, sin perder el orden original del texto.
-    Si la imagen es una captura de una publicación en una red social, extrae únicamente el texto principal del contenido publicado y
-    excluye cualquier elemento de interfaz o metadatos de la plataforma, incluyendo nombre de usuario, fecha, hora, número de me gusta, 
-    comentarios, compartidos, guardados, reproducciones, botones (reacciones, comentar, compartir, seguir, etc.), nombre del audio y 
-    descripciones externas al contenido principal de la publicación."""
+    Si la imagen es una captura de una publicación en una red social, extrae únicamente el texto principal del contenido publicado
+    y excluye cualquier elemento de interfaz o metadatos de la plataforma."""
 
     # Construir mensaje multimodal con texto + imagen en base64
     message = HumanMessage(
