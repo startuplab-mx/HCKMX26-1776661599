@@ -4,6 +4,7 @@
 
 BRBS es una solución de seguridad digital que analiza publicaciones y mensajes de chat para detectar patrones de reclutamiento criminal dirigidos a jóvenes. Utilizando modelos de lenguaje avanzados y agentes de IA, el sistema clasifica el comportamiento de usuarios y contenido en tiempo real, permitiendo identificar amenazas potenciales de forma automática.
 
+![Texto alternativo](/docs/graphical_abstract.jpg.jpeg)
 ### Objetivo Principal
 
 Proteger a menores de edad de intentos de reclutamiento por parte de organizaciones criminales a través de:
@@ -93,9 +94,8 @@ streamlit run Menu.py
 La aplicación se abrirá en tu navegador
 
 ### Video de uso
-El siguiente enlace tiene un video de información de cómo usar la aplicación
-[enlace]
-
+El siguiente enlace tiene un video de información de cómo usar la aplicación:  
+[![Video de demostración]](https://www.youtube.com/watch?v=ID_DEL_VIDEO)
 ### Características Disponibles
 
 1. **Chat**: 

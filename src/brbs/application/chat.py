@@ -51,7 +51,7 @@ h1 { color: white !important; margin-bottom: 30px !important; }
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown("<h1 style='text-align: center;'>Simulación de Chat Interactivo (Seguro)</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>Simulación de Chat Interactivo</h1>", unsafe_allow_html=True)
 
 # --- Estado de sesión ---
 if "historial_u1" not in st.session_state:
