@@ -71,7 +71,7 @@ def procesar_mensaje(emisor, receptor, mensaje_raw, historial_emisor, historial_
     with st.spinner(f"Agente 1: Corrigiendo texto..."):
         texto_corregido = corrector_texto(mensaje_raw)
 
-    # Añadir al historial global para que el Agente 2 tenga el contexto (usamos el corregido)
+    # Añadir al historial global para que el Agente 2 tenga el contexto
     st.session_state.historial_global.append({
         "user": emisor,
         "hora": datetime.now().strftime("%H:%M:%S"),

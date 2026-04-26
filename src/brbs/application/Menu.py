@@ -1,6 +1,6 @@
 import streamlit as st
 
-# Configuración inicial (Solo se pone aquí)
+# Configuración inicial
 st.set_page_config(layout="wide", page_title="Hackathon Hub")
 
 # Definimos las páginas apuntando a los otros archivos

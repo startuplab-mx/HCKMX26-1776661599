@@ -4,7 +4,6 @@ import os
 from langchain_openai import ChatOpenAI
 from brbs.domain.extractor import extraer_texto_imagen, analizar_reclutamiento
 
-# --- ESTILO VISUAL CORREGIDO ---
 st.markdown("""
 <style>
 /* Fondo general */
