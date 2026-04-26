@@ -19,7 +19,6 @@ st.markdown("""
     padding-top: 2rem !important;
 }
 
-/* SOLO tipografía segura */
 body, p, h1, h2, h3, button, input, textarea {
     font-family: 'Segoe UI', sans-serif !important;
 }
