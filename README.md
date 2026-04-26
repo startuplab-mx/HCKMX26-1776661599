@@ -17,7 +17,7 @@ Proteger a menores de edad de intentos de reclutamiento por parte de organizacio
 
 El proyecto está organizado en dos capas principales:
 
-### 📁 Estructura
+### Estructura
 
 ```
 brbs/
@@ -95,7 +95,8 @@ La aplicación se abrirá en tu navegador
 
 ### Video de uso
 El siguiente enlace tiene un video de información de cómo usar la aplicación:  
-[![Video de demostración]](https://www.youtube.com/watch?v=ID_DEL_VIDEO)
+[![Video de demostración]](https://youtu.be/xfgiu6ArXT8)
+
 ### Características Disponibles
 
 1. **Chat**: 
@@ -110,7 +111,11 @@ El siguiente enlace tiene un video de información de cómo usar la aplicación:
    - Procesa múltiples registros automáticamente
    - Genera reportes de riesgo
 
-
+## Uso de LLM´s
+Para este proyecto se utilizaron los siguientes LLM´s:
+- Gemini pro: Para generación y corrección de código. Así como consultas de dudas técnicas
+- Chatgpt: Para generación y corrección de código. Así como consultas de dudas técnicas
+- Copilot: para generación del borrador del READMD.md
 
 ## Licencia
 

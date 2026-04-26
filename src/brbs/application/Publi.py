@@ -93,6 +93,15 @@ div.stButton > button:first-child {
     border: 1px solid #334155 !important;
     color: white !important;
 }
+
+/* --- TAMAÑO FIJO PARA LA IMAGEN SUBIDA --- */
+[data-testid="stImage"] img {
+    height: 250px !important; /* Fija la altura máxima que desees */
+    width: 100% !important;
+    object-fit: cover !important; /* Hace que la imagen llene el cuadro sin deformarse */
+    border-radius: 8px !important;
+}
+            
 </style>
 """, unsafe_allow_html=True)
 
