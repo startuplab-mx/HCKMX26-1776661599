@@ -31,7 +31,7 @@ def extraer_texto_imagen(ruta_imagen):
         model="gpt-4o-mini",
         temperature=0,
         api_key=api_key
-    ).with_structured_output(AnalisisOutput)
+    )
 
     # Detectar tipo MIME del archivo (por ejemplo: image/png, image/jpeg)
     mime_type, _ = mimetypes.guess_type(ruta_imagen)
