@@ -158,9 +158,12 @@ def analizar_chat_reclutamiento(historial_mensajes: List[dict]) -> AnalisisReclu
     instrucciones = f"""Eres un sistema de seguridad experto en ciberseguridad y prevención de reclutamiento de grupos criminales.
     Tu objetivo es analizar una conversación de chat (los últimos 5 mensajes) justo antes de que el último mensaje sea entregado al receptor.
 
-    Debes detectar si algún usuario está pidiendo datos personales confidenciales, haciendo promesas de dinero fácil, o mostrando patrones de reclutamiento.
-    detecta hashtags peligrosos de {hashtags_str} y emojis con significado oculto como por ejemplo {emojis_str}.
+    Detecta hashtags peligrosos de {hashtags_str} y emojis con significado oculto como por ejemplo {emojis_str}.
     Entiende bien el contexto en el que se usan estos hashtags y emojis para saber si realmente son sobre reclutamiento.
+    No todos los emojis y hashtags se usan para esto así que sé flexible y entiende bien el contexto en cómo se usan.
+    Puede que algunas personas usen este tipo de lenguaje para parecer malos pero toma en cuenta si algún usuario está pidiendo 
+    datos personales confidenciales, haciendo promesas de dinero fácil, o mostrando patrones de reclutamiento.
+
     Realiza un 'Chain of Thought' (pensamiento paso a paso) en el campo correspondiente antes de dar tu veredicto.
 
     Reglas para clasificar el estado de los usuarios:
