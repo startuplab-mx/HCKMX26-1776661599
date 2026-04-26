@@ -1,7 +1,5 @@
 # BRBS - Agente de Detección de Reclutamiento Criminal
 
-Un sistema inteligente basado en agentes que utiliza Inteligencia Artificial para identificar intentos de reclutamiento de menores en redes sociales y plataformas de comunicación para organizaciones criminales.
-
 ## Descripción General
 
 BRBS es una solución de seguridad digital que analiza publicaciones y mensajes de chat para detectar patrones de reclutamiento criminal dirigidos a jóvenes. Utilizando modelos de lenguaje avanzados y agentes de IA, el sistema clasifica el comportamiento de usuarios y contenido en tiempo real, permitiendo identificar amenazas potenciales de forma automática.
@@ -25,7 +23,7 @@ brbs/
 ├── application/          # Interfaz Streamlit (Prototipo visual)
 │   ├── Menu.py          # Navegación principal de la aplicación
 │   ├── chat.py          # Interfaz de chat interactivo
-│   └── Publi.py         # Panel de análisis de archivos/publicaciones
+│   └── publi.py         # Panel de análisis de archivos/publicaciones
 │
 └── domain/              # Lógica de Filtros y Agentes
     ├── agents.py        # Agentes de IA para clasificación
@@ -38,15 +36,14 @@ brbs/
 #### **Domain (Filtros de Agentes)**
 - **agents.py**: Contiene los agentes de IA que clasifican usuarios y contenido
   - `corrector_texto()`: Normaliza "leet speak" a texto plano
-  - `AccionUsuario`: Modelo para clasificar comportamiento (normal, advertencia, sospechoso)
+  - `analizar_chat_reclutamiento()`: Agente para clasificar comportamiento (normal, advertencia, sospechoso)
   
 - **extractor.py**: Extracción de características y análisis de contenido
-- **prompts.py**: Templates de prompts optimizados para GPT-4o-mini
 
 #### **Application (Interfaz Streamlit)**
 - **Menu.py**: Router principal que gestiona la navegación entre páginas
 - **chat.py**: Interfaz conversacional para análisis de mensajes
-- **Publi.py**: Panel para subir y analizar archivos/publicaciones
+- **publi.py**: Panel para subir y analizar archivos/publicaciones
 
 ## Instalación
 
@@ -94,6 +91,10 @@ streamlit run Menu.py
 ```
 
 La aplicación se abrirá en tu navegador
+
+### Video de uso
+El siguiente enlace tiene un video de información de cómo usar la aplicación
+[enlace]
 
 ### Características Disponibles
 
