@@ -1,12 +1,8 @@
 import streamlit as st
 import tempfile
 import os
-from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 from brbs.domain.extractor import extraer_texto_imagen, analizar_reclutamiento
-
-# Cargar variables de entorno (para la API Key de OpenAI)
-load_dotenv()
 
 # --- ESTILO VISUAL CORREGIDO ---
 st.markdown("""
@@ -126,7 +122,7 @@ with col_izq:
             st.image(img_file, use_container_width=True)
         else:
             st.markdown(
-                "<div style='height: 100px; text-align: center; color: #475569; padding-top: 35px;'>Cargar imagen</div>",
+                "<div style='height: 80px; text-align: center; color: #475569; padding-top: 35px;'>Cargar imagen</div>",
                 unsafe_allow_html=True
             )
 
@@ -137,7 +133,7 @@ with col_izq:
         texto_pub = st.text_area(
             "Texto",
             placeholder="¿Qué estás pensando?...",
-            height=120,
+            height=100,
             label_visibility="collapsed"
         )
 
@@ -153,13 +149,10 @@ with col_izq:
                             with tempfile.NamedTemporaryFile(delete=False, suffix=".png") as tmp_file:
                                 tmp_file.write(img_file.getvalue())
                                 temp_path = tmp_file.name
-                            
-                            # Instanciamos el LLM para pasárselo a tu función
-                            # (Usamos gpt-4o-mini que soporta capacidades de visión)
-                            llm_vision = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+                        
                             
                             # Extraemos el texto
-                            texto_extraido_imagen = extraer_texto_imagen(temp_path, llm_vision)
+                            texto_extraido_imagen = extraer_texto_imagen(temp_path)
                             
                             # Limpiamos el archivo temporal
                             os.remove(temp_path)

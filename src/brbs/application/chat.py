@@ -122,7 +122,7 @@ col1, col2 = st.columns(2)
 
 # --- COLUMNA 1: SUJETO 1 ---
 with col1:
-    with st.container(height=500, border=True):
+    with st.container(height=300, border=True):
         for msg in st.session_state.historial_u1:
             if msg["type"] == "system":
                 st.markdown(f"<div class='chat-row system'>{msg['content']}</div>", unsafe_allow_html=True)
@@ -141,7 +141,7 @@ with col1:
 
 # --- COLUMNA 2: SUJETO 2 ---
 with col2:
-    with st.container(height=500, border=True):
+    with st.container(height=300, border=True):
         for msg in st.session_state.historial_u2:
             if msg["type"] == "system":
                 st.markdown(f"<div class='chat-row system'>{msg['content']}</div>", unsafe_allow_html=True)
