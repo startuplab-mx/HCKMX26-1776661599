@@ -6,8 +6,7 @@ from typing import List, Literal, Optional
 from pydantic import BaseModel, Field
 from dotenv import load_dotenv
 
-load_dotenv("../.env")
-api_key = os.getenv("OPENAI_API_KEY")
+
 
 def corrector_texto(mensaje_usuario: str) -> str:
     """
@@ -30,6 +29,9 @@ def corrector_texto(mensaje_usuario: str) -> str:
     
     # Inicializamos el modelo. Usamos temperature=0 para que las respuestas 
     # sean deterministas y no se ponga "creativo" añadiendo texto no deseado.
+    load_dotenv()
+    api_key = os.getenv("OPENAI_API_KEY")
+
     llm = ChatOpenAI(
         model="gpt-4o-mini", 
         temperature=0, 
@@ -121,6 +123,9 @@ def analizar_chat_reclutamiento(historial_mensajes: List[dict]) -> AnalisisReclu
         AnalisisReclutamiento: Objeto Pydantic con el análisis y las acciones a tomar.
     """
     # Inicializamos el modelo 
+    load_dotenv()
+    api_key = os.getenv("OPENAI_API_KEY")
+
     llm = ChatOpenAI(
         model="gpt-4o-mini", 
         temperature=0, 
@@ -146,13 +151,15 @@ def analizar_chat_reclutamiento(historial_mensajes: List[dict]) -> AnalisisReclu
 
     # Enlazamos el LLM con el esquema de Pydantic
     llm_estructurado = llm.with_structured_output(AnalisisReclutamiento)
-
+    
+    hashtags_str = ", ".join(hashtag_list)
+    emojis_str = "\n".join([f"- {emoji}: {significado}" for emoji, significado in emojis_dict.items()])
     # Definimos las instrucciones del sistema
     instrucciones = f"""Eres un sistema de seguridad experto en ciberseguridad y prevención de reclutamiento de grupos criminales.
     Tu objetivo es analizar una conversación de chat (los últimos 5 mensajes) justo antes de que el último mensaje sea entregado al receptor.
 
     Debes detectar si algún usuario está pidiendo datos personales confidenciales, haciendo promesas de dinero fácil, o mostrando patrones de reclutamiento.
-    detecta hashtags peligrosos de {hashtag_list} y emojis con significado oculto como por ejemplo {emojis_dict}.
+    detecta hashtags peligrosos de {hashtags_str} y emojis con significado oculto como por ejemplo {emojis_str}.
     Entiende bien el contexto en el que se usan estos hashtags y emojis para saber si realmente son sobre reclutamiento.
     Realiza un 'Chain of Thought' (pensamiento paso a paso) en el campo correspondiente antes de dar tu veredicto.
 
