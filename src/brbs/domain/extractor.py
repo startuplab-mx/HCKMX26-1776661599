@@ -8,14 +8,12 @@ from pydantic import BaseModel, Field
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 
-def extraer_texto_imagen(ruta_imagen, llm):
+def extraer_texto_imagen(ruta_imagen):
     """
     Extrae todo el texto visible de una imagen utilizando un modelo multimodal.
 
     Args:
         ruta_imagen (str): Ruta del archivo de imagen que se desea procesar.
-        llm (object): Instancia de un modelo de lenguaje (LLM) compatible con entrada multimodal 
-                      que implemente el método `invoke`.
 
     Returns:
         str: Texto extraído de la imagen en un solo párrafo, respetando el contenido original 
@@ -24,6 +22,16 @@ def extraer_texto_imagen(ruta_imagen, llm):
     Raises:
         ValueError: Si no se puede determinar el tipo MIME del archivo de imagen.
     """
+
+    load_dotenv()
+    api_key = os.getenv("OPENAI_API_KEY")
+
+    # Configuración del LLM
+    llm = ChatOpenAI(
+        model="gpt-4o-mini",
+        temperature=0,
+        api_key=api_key
+    ).with_structured_output(AnalisisOutput)
 
     # Detectar tipo MIME del archivo (por ejemplo: image/png, image/jpeg)
     mime_type, _ = mimetypes.guess_type(ruta_imagen)
@@ -97,7 +105,7 @@ def analizar_reclutamiento(data_input: Dict[str, Optional[str]]) -> Dict[str, An
               Explicación breve de los indicios detectados que llevaron a la decisión.
     """
     
-    load_dotenv("../.env")
+    load_dotenv()
     api_key = os.getenv("OPENAI_API_KEY")
 
     # Configuración del LLM
